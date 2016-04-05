@@ -1,26 +1,16 @@
 import $ from "jquery";
+import ActionListener from "./ActionListener.js";
 
-class Component {
+class Component extends ActionListener {
 	constructor(componentId) {
+		super();
 		this.componentId = componentId;
-		this.content = document.querySelector('[data-cid="' + this.componentId + '"]');
+		this.target = document.querySelector('[data-cid="' + this.componentId + '"]');
 	}
 	
-	ele(ele){
-		return $(this.content, ele)[0]
+	getElement(ele){
+		return $(this.target, ele)[0];
 	}
-
-	suscribe(event, fn){
-		this.content.addEventListener(event, fn, false);
-	}
-
-	trigger(event){
-		this.content.dispatchEvent(new Event(event));		
-	}
-	
-	/*on(event, fn){
-		this.button.on(event, fn);
-	}*/
 
 }
 

@@ -1,5 +1,6 @@
 import Molecule from "../../core/Molecule.js";
 import atomButton from "../../atoms/fields/button/atomButton.js";
+import $ from "jquery";
 
 class moleculeMenu extends Molecule {
 	constructor(componentId) {
@@ -8,31 +9,39 @@ class moleculeMenu extends Molecule {
 	}
 
 	catchDom(){
-		this.moleculeMenu = this.ele('.molecule-menu');
-		this.addAtom(new atomButton("myButton1"));
-		this.addAtom(new atomButton("myButton2"));
-		this.addAtom(new atomButton("myButton3"));
+		this.moleculeMenu = this.getElement('.molecule-menu');
+		this.overButton1 = new atomButton("overButton1");
+		this.overButton2 = new atomButton("overButton2");
 	}
 
-	suscribeEvents(){
+	suscribeEvents(){			
+		//this.suscribe("isAllOverButton", this.fn().isAllOver);
+		this.overButton1.addActionListener("mouseover", this.events.overButton);
+		this.overButton2.addActionListener("mouseover", this.events.overButton);
+	}
+	
+	get events(){
+		return{
+			overButton:(e)=> {
+				this.target.hover = true;
+				this.dispatchAction("hover", e);
+				this.fn.isAllOver();
+			}
+		}
+	}
 
-		this.getAtom("myButton1").suscribe("mouseover",  ()=> {
-			this.getAtom("myButton1").className = "hover";
-		});	
-
-		this.getAtom("myButton2").suscribe("mouseover", ()=> {
-			this.getAtom("myButton2").className = "hover";
-		});
-
-		this.getAtom("myButton3").suscribe("mouseover", ()=> {
-			this.getAtom("myButton3").className = "hover";
-		});
-		
+	get fn(){
+		return{
+			isAllOver: ()=>{
+				//if(this.overButton1)
+				this.dispatchAction("isAllOverButton", {yo:this});
+			}
+		}
 	}
 
 	init(){
-		this.catchDom();		
-		this.suscribeEvents();	
+		this.catchDom();
+		this.suscribeEvents();		
 	}
 
 }

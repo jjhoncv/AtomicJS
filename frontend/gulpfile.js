@@ -34,6 +34,10 @@ gulp.task('js', ["clean:js"], function() {
 		extensions: ['.js'],
 		debug: true
 	})
+	.on('error', function(err){      
+	  console.log(err.message);      
+	  this.emit('end');
+	})
 	.transform("babelify", {
 		presets: ["es2015"]			
 	})
@@ -43,7 +47,7 @@ gulp.task('js', ["clean:js"], function() {
 	  this.emit('end');
 	})
 	.pipe(source('index.js'))
-	.pipe(gulp.dest("../app/home/index"));
+	.pipe(gulp.dest("../app/home"));
 });
 
 gulp.task('css', ['clean:css'], function(cb){
