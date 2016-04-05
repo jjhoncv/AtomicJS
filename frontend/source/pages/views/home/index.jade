@@ -1,0 +1,20 @@
+//- template
+extends /templates/views/layout
+
+//- components
+include /atoms/fields/button/atom-button
+include /molecules/menu/molecule-menu
+
+block head
+	link(rel="stylesheet", href="index.css", media="all")
+
+block content
+	p Welcome to my first page
+	+atom-button()(data-cid="myButton")
+		| submit
+
+	+molecule-menu()(data-cid="menu")
+		| menu
+
+block footer
+	script(type="text/javascript", src="index.js")

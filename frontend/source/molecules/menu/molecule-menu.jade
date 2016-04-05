@@ -1,0 +1,13 @@
+mixin molecule-menu
+	ul(class="molecule-menu")&attributes(attributes)
+		li
+			+atom-button()(data-cid="myButton1")
+				| myButton1
+		li
+			+atom-button()(data-cid="myButton2")
+				| myButton2
+		li
+			+atom-button()(data-cid="myButton3")
+				| myButton3
+	if block
+		block
