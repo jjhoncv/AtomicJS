@@ -1,25 +1,18 @@
 import $ from "jquery";
-import ActionListener from "./ActionListener.js";
+import {ActionDispatcher} from "atomic-core";
 
-function addAttr(ele, attr, value){
-	var attr = ele.attr(attr);
-	attrs = attr.join("");
-	
-}
-
-class Component extends ActionListener {
+class Component extends ActionDispatcher {
 	constructor(componentId) {
 		super();
 		this.componentId = componentId;
-		this.target = $('[data-cid="' + this.componentId + '"]');
+		this.target = $('[data-cid="' + this.componentId + '"]');		
 	}
 	
 	getElement(ele){		
-		this.$ele = $(this.target, ele)
-		return this.$ele[0];
+		return $(ele, this.target)[0];
 	}
 
-	get hover(){
+	/*get hover(){
 		return this._hover;
 	}
 
@@ -31,7 +24,7 @@ class Component extends ActionListener {
 		else{
 			this.$ele.attr("data-state", this.$ele.attr("data-state").replace(/hover/g,""));
 		}
-	}
+	}*/
 
 }
 

@@ -28,6 +28,6 @@
     "watchify": "^3.7.0"
   },
   "dependencies": {
-    "atomic-core": "^0.4.0"
+    "atomic-core": "^0.4.1"
   }
 }
