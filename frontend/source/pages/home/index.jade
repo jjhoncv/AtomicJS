@@ -2,19 +2,25 @@
 extends /templates/views/layout
 
 //- components
-include /atoms/fields/button/atom-button
-include /molecules/menu/molecule-menu
+include /organisms/header/organism-header
 
 block head
 	link(rel="stylesheet", href="index.css", media="all")
 
 block content
-	p Welcome to my first page
-	+atom-button()(data-cid="myButton")
-		| submit
+	-
+		var list = [
+			{title:"Autos Nuevos", href:"#"},
+			{title:"Autos Usados", href:"#"},
+			{title:"Motos", href:"#"},
+			{title:"Servicios", list: [
+				{title:"Tarifador de vehículos", href:"#", icon:"faq"},
+				{title:"Alertas de avisos", href:"#", icon:"send"},
+				{title:"Comparador de vehiculos 0km", href:"#", icon:"circles"}
+			]}
+		]
 
-	+molecule-menu()(data-cid="menu")
-		| menu
+	+organism-header(list)(data-cid="headerDefault").organism-header--default
 
 block footer
 	script(type="text/javascript", src="index.js")

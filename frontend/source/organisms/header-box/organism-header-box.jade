@@ -1,0 +1,14 @@
+include /atoms/logo/atom-logo
+include /molecules/search/molecule-search
+include /molecules/menu/molecule-menu
+
+
+mixin organism-header-box(list)
+	section(class="organism-header-box")&attributes(attributes)
+		.center_box
+			.grid_3
+				+atom-logo()(data-cid="search")
+			.grid_4
+				+molecule-search()(data-cid="search").molecule-search--principal
+			.grid_5
+				+molecule-menu(list)(data-cid="menu").molecule-menu--principal

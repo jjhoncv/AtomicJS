@@ -1,13 +1,15 @@
-mixin molecule-menu
-	ul(class="molecule-menu")&attributes(attributes)
-		li
-			+atom-button()(data-cid="overButton1")
-				| overButton1
-		li
-			+atom-button()(data-cid="overButton2")
-				| overButton2
-		li
-			+atom-button()(data-cid="myButton3")
-				| myButton3
+include /atoms/nav/atom-nav
+
+mixin molecule-menu(list)
+	div(class="molecule-menu")&attributes(attributes)
+		+nav()
+			each item in list
+				if item.list
+					+nav_item_dropdown( "#" )( label="#{item.title}")
+						each _item in item.list
+							+nav_item(_item.href)=_item.title
+				else
+					+nav_item( item.href )=item.title
+
 	if block
 		block

@@ -10,29 +10,37 @@ class moleculeMenu extends Molecule {
 
 	catchDom(){
 		this.moleculeMenu = this.getElement('.molecule-menu');
-		this.overButton1 = new atomButton("overButton1");
-		this.overButton2 = new atomButton("overButton2");
+		this.btnAutosNuevos = new atomButton("btnAutosNuevos");
+		this.myButton = this.getElement('.my-button');
+
 	}
 
-	suscribeEvents(){			
-		//this.suscribe("isAllOverButton", this.fn().isAllOver);
-		this.overButton1.addActionListener("mouseover", this.events.overButton);
-		this.overButton2.addActionListener("mouseover", this.events.overButton);
+	suscribeEvents(){
+		
+		this.myButton.on("click", function(e){
+
+		})
+
+
+		//this.btnAutosNuevos.addActionListener("clickButton", this.events.clickButton);
+		//this.btnAutosNuevos.addActionListener("mouseoutButton", this.events.outButton);
+
 	}
 	
 	get events(){
 		return{
-			overButton:(e)=> {
-				this.target.hover = true;
-				this.dispatchAction("hover", e);
-				this.fn.isAllOver();
+			overButton: (e)=> {
+				e.target.hover = true;
+			},
+			outButton: (e)=>{				
+				e.target.hover = false;
 			}
 		}
 	}
 
 	get fn(){
 		return{
-			isAllOver: ()=>{
+			isAllOver: ()=> {
 				//if(this.overButton1)
 				this.dispatchAction("isAllOverButton", {yo:this});
 			}

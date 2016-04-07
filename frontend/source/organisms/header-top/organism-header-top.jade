@@ -1,0 +1,30 @@
+include /atoms/isotipo/atom-isotipo
+include /molecules/search/molecule-search
+include /molecules/menu/molecule-menu
+
+
+mixin organism-header-top()
+	-
+		var links = [
+			{title:"Noticias", href:"#"},
+			{title:"blog", href:"#"}
+		]
+
+	-
+		var login = [
+			{title:"Registrate", href:"#"},
+			{title:"Ingresa", href:"#"}
+		]
+
+	section(class="organism-header-top")&attributes(attributes)
+		.center_box
+			.grid_1
+				+atom-isotipo()(data-cid="isotipo")
+			.grid_5
+				+molecule-menu(links)(data-cid="menuExternals").molecule-menu--externals
+			.grid_6
+				.grid_6
+					+atom-button()(data-cid="vendeTuVehiculo")
+						| Vende tu Vehiculo
+				.grid_6
+					+molecule-menu(login)(data-cid="menuLogin").molecule-menu--login

@@ -4,20 +4,7 @@ import $ from "jquery";
 class atomButton extends Atom {
 	constructor(componentId) {
 		super(componentId);
-		this.init();
-	}
-
-	get hover(){
-		return this.hover;
-	}
-
-	set hover(value) {
-		this.hover = value;
-
-		if(this.hover)
-			this.button.addClass('hover');
-		else
-			this.button.removeClass('hover');
+		this.init();		
 	}
 
 	catchDom(){
@@ -25,18 +12,14 @@ class atomButton extends Atom {
 	}
 
 	subscribeEvents() {
-		this.button.on('mouseover', this.events.handleMouseOver);
-		this.button.on('click', this.events.handleClick);
+		
 	}
 
 	get events() {
-		return {
-			handleMouseOver : (e) => {
-				this.dispatchAction('mouseover');
-			},
+		return {			
 			handleClick : (e) => {
-				this.dispatchAction('click');
-			}
+				this.dispatchAction('clickButton');
+			}			
 		}
 	}
 

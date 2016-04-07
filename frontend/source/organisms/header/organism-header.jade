@@ -1,0 +1,8 @@
+include /organisms/header-box/organism-header-box
+include /organisms/header-top/organism-header-top
+
+
+mixin organism-header(list)
+	header&attributes(attributes)
+		+organism-header-top()(data-cid="headerTop").organism-header-top--default
+		+organism-header-box(list)(data-cid="headerBox").organism-header-box--default

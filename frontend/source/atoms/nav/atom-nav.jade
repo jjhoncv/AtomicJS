@@ -1,0 +1,22 @@
+mixin nav(name, id, style)
+	- var style = (typeof style === 'undefined') ? "default" : style
+	nav( role="navigation", class=["navbar", "navbar-" + style] )
+		ul.nav.navbar-nav
+			block
+
+mixin nav_item(href, active)
+	li(class=active): a( href=href )
+		block
+
+mixin nav_item_dropdown(href, active)
+	li(class=["dropdown", active])
+		a.dropdown-toggle( href=href, data-toggle="dropdown", role="button", aria-expanded="false" )= attributes.label
+		ul.dropdown-menu( role="menu" )
+			block
+
+mixin nav_header
+	li.dropdown-header
+		block
+
+mixin nav_divider
+	li.divider

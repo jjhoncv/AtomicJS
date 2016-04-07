@@ -1,0 +1,9 @@
+include /atoms/fields/button/atom-button
+
+mixin molecule-search
+	div(class="molecule-search")&attributes(attributes)
+		input.txt_search(type="text" placeholder="Buscar por marca o modelo")
+		+atom-button()(data-cid="btnSearch")
+			| Buscar
+	if block
+		block
